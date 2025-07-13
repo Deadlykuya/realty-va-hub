@@ -48,7 +48,7 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffd700" fill-opacity="0.03"%3E%3Cpath d="M25 0L50 25L25 50L0 25L25 0Z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] bg-repeat"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffd700\" fill-opacity=\"0.03\"%3E%3Cpath d=\"M25 0L50 25L25 50L0 25L25 0Z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] bg-repeat"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}

@@ -64,7 +64,7 @@ export const Blog = () => {
   return (
     <section id="blog" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M15 0L30 15L15 30L0 15L15 0Z" fill="%23ffd700" fill-opacity="0.02"/%3E%3C/svg%3E')] bg-repeat"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M15 0L30 15L15 30L0 15L15 0Z\" fill=\"%23ffd700\" fill-opacity=\"0.02\"/%3E%3C/svg%3E')] bg-repeat"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
