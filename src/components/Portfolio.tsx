@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ExternalLink, TrendingUp, Home, DollarSign, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";

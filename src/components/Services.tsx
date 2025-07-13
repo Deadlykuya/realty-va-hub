@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Phone, Home, TrendingUp, Users, ChevronRight, Star, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";

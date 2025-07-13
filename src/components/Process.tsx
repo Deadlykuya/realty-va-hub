@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Phone, Search, FileText, HandShake, TrendingUp, CheckCircle } from "lucide-react";
 
