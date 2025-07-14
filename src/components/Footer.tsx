@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer className="bg-gradient-to-t from-black to-gray-900 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23ffd700\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M20 20c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20zM0 20c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20S0 8.954 0 20z\"/%3E%3C/g%3E%3C/svg%3E')]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/2 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Footer Content */}

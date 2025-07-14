@@ -43,7 +43,7 @@ export const Services = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M50 50L25 25L50 0L75 25L50 50Z\" fill=\"%23ffd700\" fill-opacity=\"0.02\"/%3E%3C/svg%3E')] bg-repeat"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/2 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
