@@ -17,7 +17,7 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 lg:col-span-2">
             <div className="text-3xl font-bold text-yellow-400 mb-4">
-              RE<span className="text-white">VA</span>
+              Realty VA Hub
             </div>
             <p className="text-gray-300 mb-6 text-lg leading-relaxed">
               The premier virtual assistant agency for real estate professionals. 
@@ -33,7 +33,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-yellow-400" />
-                <span className="text-gray-300">info@reva.com</span>
+                <span className="text-gray-300">info@realtyva.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-yellow-400" />
@@ -125,7 +125,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="py-6 border-t border-gray-800 text-center">
           <div className="flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
-            <p>&copy; 2024 REVA - Real Estate Virtual Assistants. All rights reserved.</p>
+            <p>&copy; 2024 Realty VA Hub - Real Estate Virtual Assistants. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-yellow-400 transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-yellow-400 transition-colors">Terms of Service</a>

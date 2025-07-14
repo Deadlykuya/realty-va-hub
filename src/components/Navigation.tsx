@@ -22,7 +22,7 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="text-2xl font-bold text-yellow-400">
-            RE<span className="text-white">VA</span>
+            Realty VA Hub
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
@@ -35,7 +35,7 @@ export const Navigation = () => {
               <a href="tel:+1234567890" className="text-yellow-400 hover:text-white transition-colors">
                 <Phone className="w-4 h-4" />
               </a>
-              <a href="mailto:info@reva.com" className="text-yellow-400 hover:text-white transition-colors">
+              <a href="mailto:info@realtyva.com" className="text-yellow-400 hover:text-white transition-colors">
                 <Mail className="w-4 h-4" />
               </a>
             </div>

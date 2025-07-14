@@ -94,9 +94,9 @@ export const Hero = () => {
               <span>(123) 456-7890</span>
             </a>
             <span className="hidden sm:block">•</span>
-            <a href="mailto:info@reva.com" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
+            <a href="mailto:info@realtyva.com" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
               <Mail className="w-4 h-4" />
-              <span>info@reva.com</span>
+              <span>info@realtyva.com</span>
             </a>
           </div>
         </div>

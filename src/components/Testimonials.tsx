@@ -8,7 +8,7 @@ const testimonials = [
     title: "Real Estate Investor",
     company: "Johnson Properties",
     rating: 5,
-    text: "REVA completely transformed our acquisition process. Their cold calling team generated over $3M in deals in just 8 months. The ROI is incredible!",
+    text: "Realty VA Hub completely transformed our acquisition process. Their cold calling team generated over $3M in deals in just 8 months. The ROI is incredible!",
     avatar: "SJ",
     deals: "$3.2M",
     properties: "47"
