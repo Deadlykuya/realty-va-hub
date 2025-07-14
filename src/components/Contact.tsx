@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -191,34 +191,12 @@ export const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Phone</h4>
-                    <p className="text-gray-300">+1 (555) 123-4567</p>
-                    <p className="text-gray-400 text-sm">Mon-Fri, 8AM-8PM EST</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Email</h4>
-                    <p className="text-gray-300">info@realtyva.com</p>
+                    <p className="text-gray-300">ryan@realtyvahub.dpdns.org</p>
                     <p className="text-gray-400 text-sm">We respond within 2 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Location</h4>
-                    <p className="text-gray-300">123 Business Ave</p>
-                    <p className="text-gray-300">New York, NY 10001</p>
                   </div>
                 </div>
 
@@ -229,8 +207,6 @@ export const Contact = () => {
                   <div>
                     <h4 className="text-white font-semibold mb-1">Business Hours</h4>
                     <p className="text-gray-300">Monday - Friday: 8AM - 8PM</p>
-                    <p className="text-gray-300">Saturday: 9AM - 5PM</p>
-                    <p className="text-gray-300">Sunday: Closed</p>
                   </div>
                 </div>
               </div>

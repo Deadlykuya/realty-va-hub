@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ChevronUp } from "lucide-react";
+import { Mail, Facebook, Twitter, Linkedin, Instagram, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
@@ -28,16 +28,11 @@ export const Footer = () => {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-yellow-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-yellow-400" />
-                <span className="text-gray-300">info@realtyva.com</span>
+                <span className="text-gray-300">ryan@realtyvahub.dpdns.org</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-yellow-400" />
-                <span className="text-gray-300">123 Business Ave, New York, NY 10001</span>
+              <div className="text-gray-300 text-sm mt-2">
+                Business Hours: Monday - Friday, 8AM - 8PM
               </div>
             </div>
           </div>
