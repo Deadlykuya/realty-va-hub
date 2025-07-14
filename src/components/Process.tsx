@@ -53,7 +53,7 @@ export const Process = () => {
           // Auto-progress through steps
           const interval = setInterval(() => {
             setActiveStep((prev) => (prev + 1) % processSteps.length);
-          }, 3000);
+          }, 5000);
 
           return () => clearInterval(interval);
         }
@@ -90,7 +90,7 @@ export const Process = () => {
             {/* Timeline Line */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-700 rounded-full">
               <div 
-                className="h-full bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full transition-all duration-1000"
+                className="h-full bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full transition-all duration-2000 ease-in-out"
                 style={{ width: `${((activeStep + 1) / processSteps.length) * 100}%` }}
               ></div>
             </div>
@@ -100,13 +100,13 @@ export const Process = () => {
               {processSteps.map((step, index) => (
                 <div
                   key={index}
-                  className={`relative cursor-pointer transition-all duration-500 ${
+                  className={`relative cursor-pointer transition-all duration-1500 ease-in-out ${
                     index <= activeStep ? "scale-100" : "scale-90 opacity-70"
                   }`}
                   onClick={() => setActiveStep(index)}
                 >
                   {/* Step Circle */}
-                  <div className={`w-16 h-16 rounded-full border-4 flex items-center justify-center mb-6 transition-all duration-500 ${
+                  <div className={`w-16 h-16 rounded-full border-4 flex items-center justify-center mb-6 transition-all duration-1500 ease-in-out ${
                     index <= activeStep 
                       ? "bg-yellow-400 border-yellow-400 shadow-lg shadow-yellow-400/50" 
                       : "bg-gray-800 border-gray-600"
@@ -119,7 +119,7 @@ export const Process = () => {
                   </div>
 
                   {/* Step Content */}
-                  <div className={`text-center transition-all duration-500 ${
+                  <div className={`text-center transition-all duration-1500 ease-in-out ${
                     index === activeStep ? "opacity-100 translate-y-0" : "opacity-70 translate-y-2"
                   }`}>
                     <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 w-64">
