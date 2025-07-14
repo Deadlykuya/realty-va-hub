@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Navigation = () => {
@@ -32,10 +32,7 @@ export const Navigation = () => {
             <a href="#testimonials" className="text-white hover:text-yellow-400 transition-colors">Reviews</a>
             <a href="#blog" className="text-white hover:text-yellow-400 transition-colors">Blog</a>
             <div className="flex items-center space-x-4">
-              <a href="tel:+1234567890" className="text-yellow-400 hover:text-white transition-colors">
-                <Phone className="w-4 h-4" />
-              </a>
-              <a href="mailto:info@realtyva.com" className="text-yellow-400 hover:text-white transition-colors">
+              <a href="mailto:ryan@realtyvahub.dpdns.org" className="text-yellow-400 hover:text-white transition-colors">
                 <Mail className="w-4 h-4" />
               </a>
             </div>
