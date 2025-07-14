@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 const blogPosts = [
   {
     id: 1,
-    title: "10 Cold Calling Scripts That Convert in 2024",
+    title: "10 Cold Calling Scripts That Convert in 2025",
     excerpt: "Discover the proven scripts our VAs use to generate $10M+ in real estate deals",
     category: "Cold Calling",
     categoryColor: "bg-red-500",
     author: "Sarah Mitchell",
     date: "Dec 15, 2024",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop&auto=format&q=90",
     trending: true
   },
   {
