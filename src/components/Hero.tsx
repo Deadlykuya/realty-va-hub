@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronRight, Play, Phone, Mail, Star } from "lucide-react";
+import { ChevronRight, Play, Mail, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
@@ -88,15 +88,10 @@ export const Hero = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-gray-300">
-            <a href="tel:+1234567890" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
-              <Phone className="w-4 h-4" />
-              <span>(123) 456-7890</span>
-            </a>
-            <span className="hidden sm:block">•</span>
-            <a href="mailto:info@realtyva.com" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
+          <div className="flex justify-center items-center text-gray-300">
+            <a href="mailto:ryan@realtyvahub.dpdns.org" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
               <Mail className="w-4 h-4" />
-              <span>info@realtyva.com</span>
+              <span>ryan@realtyvahub.dpdns.org</span>
             </a>
           </div>
         </div>
