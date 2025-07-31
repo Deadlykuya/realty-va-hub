@@ -87,14 +87,6 @@ export const Process = () => {
         {/* Desktop Timeline */}
         <div className="hidden lg:block">
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-700 rounded-full">
-              <div 
-                className="h-full bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full transition-all duration-2000 ease-in-out"
-                style={{ width: `${((activeStep + 1) / processSteps.length) * 100}%` }}
-              ></div>
-            </div>
-
             {/* Process Steps */}
             <div className="flex justify-between relative">
               {processSteps.map((step, index) => (
