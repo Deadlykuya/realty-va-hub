@@ -17,7 +17,7 @@ export const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 lg:col-span-2">
-            <img src={logo} alt="Realty VA Hub" className="h-16 w-auto mb-4" />
+            <img src={logo} alt="Realty VA Hub" className="h-24 w-auto mb-4" />
             <p className="text-gray-300 mb-6 text-lg leading-relaxed">
               The premier virtual assistant agency for real estate professionals. 
               We specialize in cold calling, property acquisitions, and dispositions 
