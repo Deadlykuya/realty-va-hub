@@ -21,8 +21,8 @@ export const Navigation = () => {
       isScrolled ? "bg-black/90 backdrop-blur-lg border-b border-yellow-400/20" : "bg-transparent"
     }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <img src={logo} alt="Realty VA Hub" className="h-12 w-auto" />
+        <div className="flex items-center justify-between h-20">
+          <img src={logo} alt="Realty VA Hub" className="h-16 md:h-20 w-auto shrink-0 object-contain" />
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#services" className="text-white hover:text-yellow-400 transition-colors">Services</a>
