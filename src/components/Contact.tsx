@@ -206,7 +206,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Business Hours</h4>
-                    <p className="text-gray-300">Monday - Friday: 8AM - 8PM</p>
+                    <p className="text-gray-300">Monday - Friday: 9AM - 5PM</p>
                   </div>
                 </div>
               </div>
