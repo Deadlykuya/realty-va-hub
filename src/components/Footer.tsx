@@ -32,7 +32,7 @@ export const Footer = () => {
                 <span className="text-gray-300">ryan@realtyvahub.com</span>
               </div>
               <div className="text-gray-300 text-sm mt-2">
-                Business Hours: Monday - Friday, 8AM - 8PM
+                Business Hours: Mon - Fri, 9AM - 5PM
               </div>
             </div>
           </div>
