@@ -29,7 +29,7 @@ export const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-yellow-400" />
-                <span className="text-gray-300">ryan@realtyvahub.dpdns.org</span>
+                <span className="text-gray-300">ryan@realtyvahub.com</span>
               </div>
               <div className="text-gray-300 text-sm mt-2">
                 Business Hours: Monday - Friday, 8AM - 8PM
