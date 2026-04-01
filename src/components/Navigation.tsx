@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
