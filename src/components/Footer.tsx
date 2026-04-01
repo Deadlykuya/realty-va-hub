@@ -1,5 +1,6 @@
 import { Mail, Facebook, Twitter, Linkedin, Instagram, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 export const Footer = () => {
   const scrollToTop = () => {
