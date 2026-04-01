@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { Portfolio } from "@/components/Portfolio";
 import { Stats } from "@/components/Stats";
 import { Blog } from "@/components/Blog";
+import { Pricing } from "@/components/Pricing";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
