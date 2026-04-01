@@ -89,9 +89,9 @@ export const Hero = () => {
 
           {/* Contact Info */}
           <div className="flex justify-center items-center text-gray-300">
-            <a href="mailto:ryan@realtyvahub.dpdns.org" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
+            <a href="mailto:ryan@realtyvahub.com" className="flex items-center space-x-2 hover:text-yellow-400 transition-colors">
               <Mail className="w-4 h-4" />
-              <span>ryan@realtyvahub.dpdns.org</span>
+              <span>ryan@realtyvahub.com</span>
             </a>
           </div>
         </div>
