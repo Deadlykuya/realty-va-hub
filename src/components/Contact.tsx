@@ -212,14 +212,14 @@ export const Contact = () => {
               </div>
             </div>
 
-            {/* Book a Call */}
+            {/* Book a Demo Call */}
             <div className="bg-gradient-to-br from-yellow-400/10 to-yellow-400/5 rounded-3xl p-8 border border-yellow-400/20">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-6 h-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Book a Call</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Book a Demo Call</h3>
                   <p className="text-gray-300 mb-4">
                     Schedule a free consultation to discuss how we can help scale your real estate business.
                   </p>

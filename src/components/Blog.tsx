@@ -1,4 +1,6 @@
 import { Calendar, User, ArrowRight, TrendingUp } from "lucide-react";
+import blogAcquisitionsImg from "@/assets/blog-acquisitions.png";
+import vaTeamImg from "@/assets/blog-va-team.png";
 import { Button } from "@/components/ui/button";
 
 const blogPosts = [
@@ -23,7 +25,7 @@ const blogPosts = [
     author: "Marcus Johnson",
     date: "Dec 12, 2024",
     readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=250&fit=crop",
+    image: blogAcquisitionsImg,
     trending: false
   },
   {
@@ -47,7 +49,7 @@ const blogPosts = [
     author: "David Thompson",
     date: "Dec 8, 2024",
     readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop",
+    image: vaTeamImg,
     trending: false
   }
 ];

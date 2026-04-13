@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { ExternalLink, TrendingUp, Home, DollarSign, Calendar } from "lucide-react";
+import luxuryResidentialImg from "@/assets/luxury-residential.png";
+import commercialRealEstateImg from "@/assets/commercial-real-estate.png";
+import multiFamilyImg from "@/assets/multi-family-development.png";
+import investmentPropertyImg from "@/assets/investment-property-network.png";
 import { Button } from "@/components/ui/button";
 
 const portfolioItems = [
@@ -7,7 +11,7 @@ const portfolioItems = [
     id: 1,
     title: "Luxury Residential Portfolio",
     category: "Acquisitions",
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=500&h=300&fit=crop",
+    image: luxuryResidentialImg,
     value: "$8.5M",
     properties: 45,
     duration: "6 months",
@@ -19,7 +23,7 @@ const portfolioItems = [
     id: 2,
     title: "Commercial Real Estate Campaign",
     category: "Cold Calling",
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=500&h=300&fit=crop",
+    image: commercialRealEstateImg,
     value: "$12.3M",
     properties: 23,
     duration: "8 months",
@@ -31,7 +35,7 @@ const portfolioItems = [
     id: 3,
     title: "Multi-Family Development",
     category: "Disposition",
-    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=500&h=300&fit=crop",
+    image: multiFamilyImg,
     value: "$6.7M",
     properties: 34,
     duration: "4 months",
@@ -43,7 +47,7 @@ const portfolioItems = [
     id: 4,
     title: "Investment Property Network",
     category: "Full Service",
-    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=500&h=300&fit=crop",
+    image: investmentPropertyImg,
     value: "$15.2M",
     properties: 78,
     duration: "12 months",

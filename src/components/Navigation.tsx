@@ -26,6 +26,7 @@ export const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#services" className="text-white hover:text-yellow-400 transition-colors">Services</a>
+            <a href="#pricing" className="text-white hover:text-yellow-400 transition-colors">Pricing</a>
             <a href="#process" className="text-white hover:text-yellow-400 transition-colors">Process</a>
             <a href="#portfolio" className="text-white hover:text-yellow-400 transition-colors">Portfolio</a>
             <a href="#testimonials" className="text-white hover:text-yellow-400 transition-colors">Reviews</a>
@@ -35,9 +36,11 @@ export const Navigation = () => {
                 <Mail className="w-4 h-4" />
               </a>
             </div>
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-300 font-semibold">
-              Get Started
-            </Button>
+            <a href="https://calendly.com/ryan0312001/booking" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-yellow-400 text-black hover:bg-yellow-300 font-semibold">
+                Get Started
+              </Button>
+            </a>
           </div>
 
           <button 
@@ -52,13 +55,16 @@ export const Navigation = () => {
           <div className="md:hidden bg-black/95 backdrop-blur-lg border-t border-yellow-400/20">
             <div className="px-4 py-6 space-y-4">
               <a href="#services" className="block text-white hover:text-yellow-400 transition-colors">Services</a>
+              <a href="#pricing" className="block text-white hover:text-yellow-400 transition-colors">Pricing</a>
               <a href="#process" className="block text-white hover:text-yellow-400 transition-colors">Process</a>
               <a href="#portfolio" className="block text-white hover:text-yellow-400 transition-colors">Portfolio</a>
               <a href="#testimonials" className="block text-white hover:text-yellow-400 transition-colors">Reviews</a>
               <a href="#blog" className="block text-white hover:text-yellow-400 transition-colors">Blog</a>
-              <Button className="w-full bg-yellow-400 text-black hover:bg-yellow-300 font-semibold mt-4">
-                Get Started
-              </Button>
+              <a href="https://calendly.com/ryan0312001/booking" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-yellow-400 text-black hover:bg-yellow-300 font-semibold mt-4">
+                  Get Started
+                </Button>
+              </a>
             </div>
           </div>
         )}
