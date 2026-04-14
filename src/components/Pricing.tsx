@@ -183,7 +183,7 @@ export const Pricing = () => {
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">CRM Packages</h3>
               <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-                Every RealtyVAHub CRM package comes with a fully customized infrastructure, built and configured by our Philippines-based automation team. We don't just hand you software. We design it, test it, and ensure it's ready to support your wholesaling business from day one.
+                Every RealtyVAHub CRM package comes with a fully customized infrastructure, built and configured by our Philippines-based VA team. We don't just hand you software. We design it, test it, and ensure it's ready to support your wholesaling business from day one.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
