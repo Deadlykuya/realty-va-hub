@@ -196,7 +196,7 @@ export const Contact = () => {
                   <div>
                     <h4 className="text-white font-semibold mb-1">Email</h4>
                     <p className="text-gray-300">ryan@realtyvahub.com</p>
-                    <p className="text-gray-400 text-sm">We respond within 2 hours</p>
+                    <p className="text-gray-400 text-sm">Your inquiries answered promptly</p>
                   </div>
                 </div>
 
