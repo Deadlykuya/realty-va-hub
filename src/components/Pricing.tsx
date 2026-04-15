@@ -4,63 +4,61 @@ import { Button } from "@/components/ui/button";
 const crmPackages = [
   {
     title: "Starter Package",
-    subtitle: "Best for Wholesalers just getting started with CRM",
+    subtitle:
+      "Best for wholesalers just getting started with CRM and outreach. Includes 1 dedicated cold caller to begin building your pipeline.",
     price: "$999",
     label: "One-Time Setup Fee",
     features: [
-      "CRM sub-account set up",
-      "Basic pipeline setup",
-      "Lead Tracking Workflow",
-      "Immediate Outreach Workflow",
-      "Long-Term Drip Workflow",
-      "Contract Execution Workflow",
-      "Inbound Intake Workflow",
-      "Email & SMS templates",
-      "AI chatbot on your website and SMS",
-      "Lead management dashboard",
-      "CRM Setup and configuration",
-      "1 onboarding training call",
-      "Email Support",
+      "Lead tracking workflow to organize prospects",
+      "Immediate outreach workflow for fast follow-up",
+      "Long-term drip workflow to nurture leads",
+      "Contract execution workflow for smooth closings",
+      "Inbound intake workflow for new inquiries",
+      "Email & SMS templates for consistent communication",
+      "Lead management dashboard for visibility",
+      "CRM setup and full configuration",
+      "One onboarding training call with our team",
+      "Ongoing email support",
     ],
     popular: false,
   },
   {
     title: "Boost Package",
-    subtitle: "Best for Active wholesalers ready to scale their pipeline",
+    subtitle:
+      "Best for active wholesalers ready to scale their pipeline. Includes 1 cold caller + 1 acquisitions manager to generate leads and convert them into signed contracts.",
     price: "$1,299",
     label: "One-Time Setup Fee",
     features: [
-      "CRM sub-account setup",
-      "Lead Tracking Workflow",
-      "Immediate Outreach Workflow",
-      "Long-Term Drip Workflow",
-      "Contract Execution Workflow",
-      "Inbound Intake Workflow",
-      "Everything on Basic",
-      "Appointment reminder sequences",
-      "2-way SMS conversation",
-      "Bi-weekly strategy call with our team",
-      "Priority email support",
+      "All workflows included in Starter",
+      "Appointment reminder sequences to reduce no-shows",
+      "Two-way SMS conversations for real-time engagement",
+      "Bi-weekly strategy calls with our team",
+      "Priority email support for faster responses",
+      "Enhanced lead tracking and reporting",
+      "Streamlined contract execution oversight",
+      "Improved drip campaigns for higher conversions",
+      "Dedicated acquisitions manager to close deals",
+      "Integrated CRM dashboard tailored for scaling",
     ],
     popular: true,
   },
   {
     title: "Premium Package",
-    subtitle: "The ultimate system with multi-channel outreach.",
-    price: "$1,499",
+    subtitle:
+      "The ultimate system with multi-channel outreach and full team support. Includes 1 cold caller + 1 acquisitions manager + 1 dispositions manager for complete pipeline coverage.",
+    price: "$1,799",
     label: "One-Time Setup Fee",
     features: [
-      "Advanced CRM automation setup",
-      "Lead Tracking Workflow",
-      "Immediate Outreach Workflow",
-      "Long-Term Drip Workflow",
-      "Contract Execution Workflow",
-      "Inbound Intake Workflow",
-      "Everything on Basic",
-      "Advanced dashboards and analytics",
-      "Monthly strategy call with dedicated account manager",
-      "Dedicated Philippines VA support (onboarding, client management, pipeline oversight)",
-      "Priority slack support channel",
+      "All features included in Boost",
+      "Advanced dashboards and analytics for deeper insights",
+      "Monthly strategy call with a dedicated account manager",
+      "Dedicated Philippines VA support for onboarding and client management",
+      "Pipeline oversight handled by your VA team",
+      "Priority Slack support channel for instant communication",
+      "Dispositions manager to handle property marketing and buyer relations",
+      "Comprehensive reporting across acquisitions and dispositions",
+      "Multi-channel outreach workflows for maximum exposure",
+      "End-to-end system for wholesalers who want full delegation",
     ],
     popular: false,
   },
@@ -85,12 +83,14 @@ export const Pricing = () => {
         </div>
 
         <div className="w-full max-w-5xl mx-auto space-y-20">
-          {/* CRM Packages Section */}
           <div>
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">CRM Packages</h3>
               <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-                Every RealtyVAHub CRM package comes with a fully customized infrastructure, built and configured by our Philippines-based automation team. We don't just hand you software. We design it, test it, and ensure it's ready to support your wholesaling business from day one.
+                Every RealtyVAHub CRM package comes with a fully customized infrastructure, built and
+                configured by our Philippines-based automation team. We don't just hand you software.
+                We design it, test it, and ensure it's ready to support your wholesaling business from
+                day one.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
