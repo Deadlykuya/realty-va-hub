@@ -22,384 +22,384 @@
   <body>
     <div id="root"></div>
     <script type="module" src="src/main.tsx"></script>
+
+    <!-- FLOATING CHAT BUBBLE -->
     <button id="rvh-chat-bubble" onclick="rvhToggle()" title="Chat with Jenny">
-  <svg id="rvh-icon-chat" width="26" height="26" viewBox="0 0 24 24" fill="none">
-    <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
-  </svg>
-  <svg id="rvh-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:none;">
-    <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
-  <div id="rvh-badge">1</div>
-</button>
-
-<!-- CHAT PANEL -->
-<div id="rvh-chat-panel">
-  <div class="rvh-header">
-    <div class="rvh-avatar">
-      🏠
-      <div class="rvh-online-dot"></div>
-    </div>
-    <div class="rvh-header-info">
-      <div class="rvh-header-name">Jenny — RealtyVA Advisor</div>
-      <div class="rvh-header-status">
-        <span class="rvh-status-green"></span> Online now
-      </div>
-    </div>
-    <button class="rvh-close-btn" onclick="rvhToggle()">✕</button>
-  </div>
-  <div class="rvh-header-tagline">Real Estate Virtual Assistant Experts 🏡</div>
-  <div class="rvh-messages" id="rvh-messages"></div>
-  <div class="rvh-input-area">
-    <textarea
-      id="rvh-input"
-      class="rvh-input"
-      placeholder="Ask about VAs, pricing, services..."
-      rows="1"
-      onkeydown="rvhKeydown(event)"
-      oninput="rvhAutoResize(this)"
-    ></textarea>
-    <button class="rvh-send-btn" id="rvh-send" onclick="rvhSend()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg id="rvh-icon-chat" width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
       </svg>
+      <svg id="rvh-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:none;">
+        <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div id="rvh-badge">1</div>
     </button>
-  </div>
-  <div class="rvh-footer-note">Powered by RealtyVAHub · AI may make mistakes</div>
-</div>
 
-<!-- STYLES -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+    <!-- CHAT PANEL -->
+    <div id="rvh-chat-panel">
+      <div class="rvh-header">
+        <div class="rvh-avatar">
+          🏠
+          <div class="rvh-online-dot"></div>
+        </div>
+        <div class="rvh-header-info">
+          <div class="rvh-header-name">Jenny — RealtyVA Advisor</div>
+          <div class="rvh-header-status">
+            <span class="rvh-status-green"></span> Online now
+          </div>
+        </div>
+        <button class="rvh-close-btn" onclick="rvhToggle()">✕</button>
+      </div>
+      <div class="rvh-header-tagline">Real Estate Virtual Assistant Experts 🏡</div>
+      <div class="rvh-messages" id="rvh-messages"></div>
+      <div class="rvh-input-area">
+        <textarea
+          id="rvh-input"
+          class="rvh-input"
+          placeholder="Ask about VAs, pricing, services..."
+          rows="1"
+          onkeydown="rvhKeydown(event)"
+          oninput="rvhAutoResize(this)"
+        ></textarea>
+        <button class="rvh-send-btn" id="rvh-send" onclick="rvhSend()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="rvh-footer-note">Powered by RealtyVAHub · AI may make mistakes</div>
+    </div>
 
-#rvh-chat-bubble {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
-  box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 2px 8px rgba(0,0,0,0.18);
-  cursor: pointer;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9998;
-  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
-  animation: rvh-pulse 3s ease-in-out infinite;
-}
-#rvh-chat-bubble:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 36px rgba(26,60,94,0.55);
-}
-#rvh-chat-bubble.open {
-  animation: none;
-  transform: scale(1.05) rotate(15deg);
-}
-@keyframes rvh-pulse {
-  0%, 100% { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 0 rgba(45,106,159,0.4); }
-  50%       { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 12px rgba(45,106,159,0); }
-}
-#rvh-badge {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 18px;
-  height: 18px;
-  background: #e84545;
-  border-radius: 50%;
-  font-size: 10px;
-  color: #fff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
-}
-#rvh-badge.show { opacity: 1; transform: scale(1); }
+    <!-- STYLES -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-#rvh-chat-panel {
-  position: fixed;
-  bottom: 102px;
-  right: 28px;
-  width: 370px;
-  height: 540px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 20px 70px rgba(0,0,0,0.18), 0 4px 20px rgba(26,60,94,0.1);
-  display: flex;
-  flex-direction: column;
-  z-index: 9999;
-  overflow: hidden;
-  transform-origin: bottom right;
-  transform: scale(0.85) translateY(20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), opacity 0.25s ease;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-#rvh-chat-panel.open {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-.rvh-header {
-  background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
-  padding: 18px 20px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-.rvh-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(255,255,255,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-  position: relative;
-}
-.rvh-online-dot {
-  position: absolute;
-  bottom: 1px;
-  right: 1px;
-  width: 10px;
-  height: 10px;
-  background: #4ade80;
-  border-radius: 50%;
-  border: 2px solid #2d6a9f;
-  animation: rvh-blink 2s ease-in-out infinite;
-}
-@keyframes rvh-blink {
-  0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
-}
-.rvh-header-info { flex: 1; }
-.rvh-header-name {
-  color: #fff;
-  font-size: 14.5px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-.rvh-header-status {
-  color: rgba(255,255,255,0.7);
-  font-size: 11.5px;
-  margin-top: 2px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.rvh-status-green {
-  width: 7px; height: 7px;
-  background: #4ade80;
-  border-radius: 50%;
-  display: inline-block;
-}
-.rvh-close-btn {
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.rvh-close-btn:hover { background: rgba(255,255,255,0.28); }
-.rvh-header-tagline {
-  background: rgba(26,60,94,0.06);
-  color: #1a3c5e;
-  font-size: 11px;
-  padding: 6px 20px 8px;
-  text-align: center;
-  border-bottom: 1px solid #edf2f8;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.rvh-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #f8fafd;
-  scroll-behavior: smooth;
-}
-.rvh-messages::-webkit-scrollbar { width: 4px; }
-.rvh-messages::-webkit-scrollbar-thumb { background: #cdd8e8; border-radius: 4px; }
-.rvh-msg {
-  display: flex;
-  flex-direction: column;
-  max-width: 82%;
-  animation: rvh-slide-in 0.3s ease;
-}
-@keyframes rvh-slide-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.rvh-msg.bot  { align-self: flex-start; }
-.rvh-msg.user { align-self: flex-end; }
-.rvh-bubble {
-  padding: 11px 14px;
-  border-radius: 16px;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #1a2a3a;
-}
-.rvh-msg.bot .rvh-bubble {
-  background: #fff;
-  border-bottom-left-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-.rvh-msg.user .rvh-bubble {
-  background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
-  color: #fff;
-  border-bottom-right-radius: 5px;
-}
-.rvh-time {
-  font-size: 10.5px;
-  color: #99aabb;
-  margin-top: 3px;
-  padding: 0 4px;
-}
-.rvh-msg.user .rvh-time { text-align: right; }
-.rvh-bot-label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 4px;
-}
-.rvh-bot-avatar {
-  width: 22px; height: 22px;
-  background: linear-gradient(135deg,#1a3c5e,#2d6a9f);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
-  color: #fff;
-  flex-shrink: 0;
-}
-.rvh-bot-name { font-size: 11px; color: #6b8299; font-weight: 600; }
-.rvh-quick-replies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 6px;
-  padding-left: 28px;
-}
-.rvh-qr {
-  background: #fff;
-  border: 1.5px solid #2d6a9f;
-  color: #1a3c5e;
-  font-size: 12px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.18s;
-  white-space: nowrap;
-}
-.rvh-qr:hover { background: #1a3c5e; color: #fff; border-color: #1a3c5e; }
-.rvh-typing {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 10px 14px;
-  background: #fff;
-  border-radius: 16px;
-  border-bottom-left-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  width: fit-content;
-  animation: rvh-slide-in 0.3s ease;
-}
-.rvh-typing span {
-  width: 7px; height: 7px;
-  background: #2d6a9f;
-  border-radius: 50%;
-  animation: rvh-bounce 1.2s ease-in-out infinite;
-  opacity: 0.6;
-}
-.rvh-typing span:nth-child(2) { animation-delay: 0.2s; }
-.rvh-typing span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes rvh-bounce {
-  0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
-  30%            { transform: translateY(-5px); opacity: 1; }
-}
-.rvh-input-area {
-  padding: 12px 14px;
-  background: #fff;
-  border-top: 1px solid #edf2f8;
-  display: flex;
-  gap: 9px;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-.rvh-input {
-  flex: 1;
-  border: 1.5px solid #dde7f2;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13.5px;
-  color: #1a2a3a;
-  outline: none;
-  resize: none;
-  max-height: 80px;
-  min-height: 40px;
-  line-height: 1.5;
-  transition: border-color 0.2s;
-  background: #f8fafd;
-}
-.rvh-input:focus { border-color: #2d6a9f; background: #fff; }
-.rvh-input::placeholder { color: #a0b4c8; }
-.rvh-send-btn {
-  width: 40px; height: 40px;
-  background: linear-gradient(135deg, #1a3c5e, #2d6a9f);
-  border: none;
-  border-radius: 11px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.18s, box-shadow 0.18s;
-  box-shadow: 0 3px 12px rgba(45,106,159,0.4);
-}
-.rvh-send-btn:hover { transform: scale(1.08); box-shadow: 0 5px 18px rgba(45,106,159,0.5); }
-.rvh-send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-.rvh-footer-note {
-  text-align: center;
-  font-size: 10px;
-  color: #b0bec8;
-  padding: 0 14px 10px;
-  background: #fff;
-  flex-shrink: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-@media (max-width: 480px) {
-  #rvh-chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: 72vh; max-height: 560px; }
-  #rvh-chat-bubble { bottom: 20px; right: 16px; }
-}
-</style>
+    #rvh-chat-bubble {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
+      box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 2px 8px rgba(0,0,0,0.18);
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+      animation: rvh-pulse 3s ease-in-out infinite;
+    }
+    #rvh-chat-bubble:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 36px rgba(26,60,94,0.55);
+    }
+    #rvh-chat-bubble.open {
+      animation: none;
+      transform: scale(1.05) rotate(15deg);
+    }
+    @keyframes rvh-pulse {
+      0%, 100% { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 0 rgba(45,106,159,0.4); }
+      50%       { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 12px rgba(45,106,159,0); }
+    }
+    #rvh-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 18px;
+      height: 18px;
+      background: #e84545;
+      border-radius: 50%;
+      font-size: 10px;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+    }
+    #rvh-badge.show { opacity: 1; transform: scale(1); }
+    #rvh-chat-panel {
+      position: fixed;
+      bottom: 102px;
+      right: 28px;
+      width: 370px;
+      height: 540px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.18), 0 4px 20px rgba(26,60,94,0.1);
+      display: flex;
+      flex-direction: column;
+      z-index: 9999;
+      overflow: hidden;
+      transform-origin: bottom right;
+      transform: scale(0.85) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), opacity 0.25s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    #rvh-chat-panel.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .rvh-header {
+      background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
+      padding: 18px 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .rvh-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .rvh-online-dot {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 10px;
+      height: 10px;
+      background: #4ade80;
+      border-radius: 50%;
+      border: 2px solid #2d6a9f;
+      animation: rvh-blink 2s ease-in-out infinite;
+    }
+    @keyframes rvh-blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
+    }
+    .rvh-header-info { flex: 1; }
+    .rvh-header-name {
+      color: #fff;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .rvh-header-status {
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .rvh-status-green {
+      width: 7px; height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .rvh-close-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .rvh-close-btn:hover { background: rgba(255,255,255,0.28); }
+    .rvh-header-tagline {
+      background: rgba(26,60,94,0.06);
+      color: #1a3c5e;
+      font-size: 11px;
+      padding: 6px 20px 8px;
+      text-align: center;
+      border-bottom: 1px solid #edf2f8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .rvh-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fafd;
+      scroll-behavior: smooth;
+    }
+    .rvh-messages::-webkit-scrollbar { width: 4px; }
+    .rvh-messages::-webkit-scrollbar-thumb { background: #cdd8e8; border-radius: 4px; }
+    .rvh-msg {
+      display: flex;
+      flex-direction: column;
+      max-width: 82%;
+      animation: rvh-slide-in 0.3s ease;
+    }
+    @keyframes rvh-slide-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .rvh-msg.bot  { align-self: flex-start; }
+    .rvh-msg.user { align-self: flex-end; }
+    .rvh-bubble {
+      padding: 11px 14px;
+      border-radius: 16px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #1a2a3a;
+    }
+    .rvh-msg.bot .rvh-bubble {
+      background: #fff;
+      border-bottom-left-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .rvh-msg.user .rvh-bubble {
+      background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
+      color: #fff;
+      border-bottom-right-radius: 5px;
+    }
+    .rvh-time {
+      font-size: 10.5px;
+      color: #99aabb;
+      margin-top: 3px;
+      padding: 0 4px;
+    }
+    .rvh-msg.user .rvh-time { text-align: right; }
+    .rvh-bot-label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+    .rvh-bot-avatar {
+      width: 22px; height: 22px;
+      background: linear-gradient(135deg,#1a3c5e,#2d6a9f);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .rvh-bot-name { font-size: 11px; color: #6b8299; font-weight: 600; }
+    .rvh-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 6px;
+      padding-left: 28px;
+    }
+    .rvh-qr {
+      background: #fff;
+      border: 1.5px solid #2d6a9f;
+      color: #1a3c5e;
+      font-size: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .rvh-qr:hover { background: #1a3c5e; color: #fff; border-color: #1a3c5e; }
+    .rvh-typing {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 14px;
+      background: #fff;
+      border-radius: 16px;
+      border-bottom-left-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: fit-content;
+      animation: rvh-slide-in 0.3s ease;
+    }
+    .rvh-typing span {
+      width: 7px; height: 7px;
+      background: #2d6a9f;
+      border-radius: 50%;
+      animation: rvh-bounce 1.2s ease-in-out infinite;
+      opacity: 0.6;
+    }
+    .rvh-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .rvh-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes rvh-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
+      30%            { transform: translateY(-5px); opacity: 1; }
+    }
+    .rvh-input-area {
+      padding: 12px 14px;
+      background: #fff;
+      border-top: 1px solid #edf2f8;
+      display: flex;
+      gap: 9px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .rvh-input {
+      flex: 1;
+      border: 1.5px solid #dde7f2;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      color: #1a2a3a;
+      outline: none;
+      resize: none;
+      max-height: 80px;
+      min-height: 40px;
+      line-height: 1.5;
+      transition: border-color 0.2s;
+      background: #f8fafd;
+    }
+    .rvh-input:focus { border-color: #2d6a9f; background: #fff; }
+    .rvh-input::placeholder { color: #a0b4c8; }
+    .rvh-send-btn {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #1a3c5e, #2d6a9f);
+      border: none;
+      border-radius: 11px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.18s, box-shadow 0.18s;
+      box-shadow: 0 3px 12px rgba(45,106,159,0.4);
+    }
+    .rvh-send-btn:hover { transform: scale(1.08); box-shadow: 0 5px 18px rgba(45,106,159,0.5); }
+    .rvh-send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .rvh-footer-note {
+      text-align: center;
+      font-size: 10px;
+      color: #b0bec8;
+      padding: 0 14px 10px;
+      background: #fff;
+      flex-shrink: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    @media (max-width: 480px) {
+      #rvh-chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: 72vh; max-height: 560px; }
+      #rvh-chat-bubble { bottom: 20px; right: 16px; }
+    }
+    </style>
 
-<!-- WIDGET JAVASCRIPT -->
-<script>
-// ── Your Cloudflare Worker URL (API key is safely hidden inside Cloudflare) ──
-const RVH_PROXY_URL = 'https://realtyvahub-proxy.ryan0312001.workers.dev';
+    <!-- WIDGET JAVASCRIPT -->
+    <script>
+    const RVH_PROXY_URL = 'https://realtyvahub-proxy.ryan0312001.workers.dev';
 
-const RVH_SYSTEM_PROMPT = `You are Jenny, a friendly and knowledgeable real estate virtual assistant advisor for RealtyVAHub — a company that places trained virtual assistants for real estate investors, agents, and operators across the U.S.
+    const RVH_SYSTEM_PROMPT = `You are Jenny, a friendly and knowledgeable real estate virtual assistant advisor for RealtyVAHub — a company that places trained virtual assistants for real estate investors, agents, and operators across the U.S.
 
 Your Personality:
 - Warm, confident, and professional — like a trusted real estate colleague
@@ -434,154 +434,160 @@ Strict Rules:
 - Keep responses concise (under 120 words unless a detailed breakdown is truly needed)
 - If someone seems ready to hire, guide them to: "You can book a free discovery call at RealtyVAHub.com 📋"`;
 
-let rvhOpen = false;
-let rvhHistory = [];
-let rvhTyping = false;
+    let rvhOpen = false;
+    let rvhHistory = [];
+    let rvhTyping = false;
 
-function rvhGetTime() {
-  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-function rvhAddMessage(role, text, quickReplies = []) {
-  const container = document.getElementById('rvh-messages');
-  const msgDiv = document.createElement('div');
-  msgDiv.className = `rvh-msg ${role}`;
-  let inner = '';
-  if (role === 'bot') {
-    inner += `<div class="rvh-bot-label">
-      <div class="rvh-bot-avatar">J</div>
-      <span class="rvh-bot-name">Jenny</span>
-    </div>`;
-  }
-  inner += `<div class="rvh-bubble">${text.replace(/\n/g, '<br>')}</div>`;
-  inner += `<div class="rvh-time">${rvhGetTime()}</div>`;
-  msgDiv.innerHTML = inner;
-  container.appendChild(msgDiv);
-  if (quickReplies.length > 0) {
-    const qrDiv = document.createElement('div');
-    qrDiv.className = 'rvh-quick-replies';
-    quickReplies.forEach(qr => {
-      const btn = document.createElement('button');
-      btn.className = 'rvh-qr';
-      btn.textContent = qr;
-      btn.onclick = () => { qrDiv.remove(); rvhSendMessage(qr); };
-      qrDiv.appendChild(btn);
-    });
-    container.appendChild(qrDiv);
-  }
-  container.scrollTop = container.scrollHeight;
-}
-
-function rvhShowTyping() {
-  const container = document.getElementById('rvh-messages');
-  const t = document.createElement('div');
-  t.id = 'rvh-typing-indicator';
-  t.className = 'rvh-msg bot';
-  t.innerHTML = `<div class="rvh-bot-label"><div class="rvh-bot-avatar">J</div><span class="rvh-bot-name">Jenny</span></div>
-    <div class="rvh-typing"><span></span><span></span><span></span></div>`;
-  container.appendChild(t);
-  container.scrollTop = container.scrollHeight;
-}
-
-function rvhHideTyping() {
-  const t = document.getElementById('rvh-typing-indicator');
-  if (t) t.remove();
-}
-
-async function rvhAsk(userMessage) {
-  rvhHistory.push({ role: 'user', content: userMessage });
-  rvhShowTyping();
-  rvhTyping = true;
-  document.getElementById('rvh-send').disabled = true;
-  try {
-    const response = await fetch(RVH_PROXY_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 512,
-        system: RVH_SYSTEM_PROMPT,
-        messages: rvhHistory
-      })
-    });
-    const data = await response.json();
-    rvhHideTyping();
-    rvhTyping = false;
-    document.getElementById('rvh-send').disabled = false;
-    console.log('Anthropic response:', JSON.stringify(data));
-if (data.content && data.content[0]) {
-      const reply = data.content[0].text;
-      rvhHistory.push({ role: 'assistant', content: reply });
-      rvhAddMessage('bot', reply);
-    } else {
-      rvhAddMessage('bot', "I'm having a moment — please try again in a second! 🏡");
+    function rvhGetTime() {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
-  } catch (err) {
-    rvhHideTyping();
-    rvhTyping = false;
-    document.getElementById('rvh-send').disabled = false;
-    rvhAddMessage('bot', "Oops, something went wrong. Please try again! 🏡");
-  }
-}
 
-function rvhSendMessage(text) {
-  const trimmed = (text || '').trim();
-  if (!trimmed || rvhTyping) return;
-  rvhAddMessage('user', trimmed);
-  rvhAsk(trimmed);
-}
-
-function rvhSend() {
-  const input = document.getElementById('rvh-input');
-  const text = input.value.trim();
-  if (!text || rvhTyping) return;
-  input.value = '';
-  input.style.height = 'auto';
-  rvhSendMessage(text);
-}
-
-function rvhKeydown(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); rvhSend(); }
-}
-
-function rvhAutoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 80) + 'px';
-}
-
-function rvhToggle() {
-  rvhOpen = !rvhOpen;
-  const panel  = document.getElementById('rvh-chat-panel');
-  const bubble = document.getElementById('rvh-chat-bubble');
-  const iconChat  = document.getElementById('rvh-icon-chat');
-  const iconClose = document.getElementById('rvh-icon-close');
-  const badge  = document.getElementById('rvh-badge');
-  if (rvhOpen) {
-    panel.classList.add('open');
-    bubble.classList.add('open');
-    iconChat.style.display  = 'none';
-    iconClose.style.display = 'block';
-    badge.classList.remove('show');
-    if (rvhHistory.length === 0) {
-      setTimeout(() => {
-        rvhAddMessage('bot',
-          "Hey there! 👋 I'm Jenny, your RealtyVAHub advisor.\n\nI help real estate investors and operators find the right virtual assistants to scale their business — from cold callers to acquisitions and dispositions VAs.\n\nWhat can I help you with today?",
-          ['What VAs do you offer?', 'How much does it cost?', 'How do I get started?', 'I need a cold caller']
-        );
-      }, 400);
+    function rvhAddMessage(role, text, quickReplies = []) {
+      const container = document.getElementById('rvh-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `rvh-msg ${role}`;
+      let inner = '';
+      if (role === 'bot') {
+        inner += `<div class="rvh-bot-label">
+          <div class="rvh-bot-avatar">J</div>
+          <span class="rvh-bot-name">Jenny</span>
+        </div>`;
+      }
+      inner += `<div class="rvh-bubble">${text.replace(/\n/g, '<br>')}</div>`;
+      inner += `<div class="rvh-time">${rvhGetTime()}</div>`;
+      msgDiv.innerHTML = inner;
+      container.appendChild(msgDiv);
+      if (quickReplies.length > 0) {
+        const qrDiv = document.createElement('div');
+        qrDiv.className = 'rvh-quick-replies';
+        quickReplies.forEach(qr => {
+          const btn = document.createElement('button');
+          btn.className = 'rvh-qr';
+          btn.textContent = qr;
+          btn.onclick = () => { qrDiv.remove(); rvhSendMessage(qr); };
+          qrDiv.appendChild(btn);
+        });
+        container.appendChild(qrDiv);
+      }
+      container.scrollTop = container.scrollHeight;
     }
-  } else {
-    panel.classList.remove('open');
-    bubble.classList.remove('open');
-    iconChat.style.display  = 'block';
-    iconClose.style.display = 'none';
-  }
-}
 
-// Show notification badge after 3 seconds
-setTimeout(() => {
-  if (!rvhOpen) document.getElementById('rvh-badge').classList.add('show');
-}, 3000);
-</script>
+    function rvhShowTyping() {
+      const container = document.getElementById('rvh-messages');
+      const t = document.createElement('div');
+      t.id = 'rvh-typing-indicator';
+      t.className = 'rvh-msg bot';
+      t.innerHTML = `<div class="rvh-bot-label"><div class="rvh-bot-avatar">J</div><span class="rvh-bot-name">Jenny</span></div>
+        <div class="rvh-typing"><span></span><span></span><span></span></div>`;
+      container.appendChild(t);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function rvhHideTyping() {
+      const t = document.getElementById('rvh-typing-indicator');
+      if (t) t.remove();
+    }
+
+    async function rvhAsk(userMessage) {
+      // Build messages array with system prompt as first user message (OpenRouter format)
+      const messages = [
+        { role: 'system', content: RVH_SYSTEM_PROMPT },
+        ...rvhHistory
+      ];
+
+      rvhShowTyping();
+      rvhTyping = true;
+      document.getElementById('rvh-send').disabled = true;
+
+      try {
+        const response = await fetch(RVH_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'google/gemma-4-31b-it:free',
+            max_tokens: 512,
+            messages: messages
+          })
+        });
+
+        const data = await response.json();
+        rvhHideTyping();
+        rvhTyping = false;
+        document.getElementById('rvh-send').disabled = false;
+
+        if (data.choices && data.choices[0]) {
+          const reply = data.choices[0].message.content;
+          rvhHistory.push({ role: 'assistant', content: reply });
+          rvhAddMessage('bot', reply);
+        } else {
+          rvhAddMessage('bot', "I'm having a moment — please try again in a second! 🏡");
+        }
+      } catch (err) {
+        rvhHideTyping();
+        rvhTyping = false;
+        document.getElementById('rvh-send').disabled = false;
+        rvhAddMessage('bot', "Oops, something went wrong. Please try again! 🏡");
+      }
+    }
+
+    function rvhSendMessage(text) {
+      const trimmed = (text || '').trim();
+      if (!trimmed || rvhTyping) return;
+      rvhHistory.push({ role: 'user', content: trimmed });
+      rvhAddMessage('user', trimmed);
+      rvhAsk(trimmed);
+    }
+
+    function rvhSend() {
+      const input = document.getElementById('rvh-input');
+      const text = input.value.trim();
+      if (!text || rvhTyping) return;
+      input.value = '';
+      input.style.height = 'auto';
+      rvhSendMessage(text);
+    }
+
+    function rvhKeydown(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); rvhSend(); }
+    }
+
+    function rvhAutoResize(el) {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+    }
+
+    function rvhToggle() {
+      rvhOpen = !rvhOpen;
+      const panel     = document.getElementById('rvh-chat-panel');
+      const bubble    = document.getElementById('rvh-chat-bubble');
+      const iconChat  = document.getElementById('rvh-icon-chat');
+      const iconClose = document.getElementById('rvh-icon-close');
+      const badge     = document.getElementById('rvh-badge');
+      if (rvhOpen) {
+        panel.classList.add('open');
+        bubble.classList.add('open');
+        iconChat.style.display  = 'none';
+        iconClose.style.display = 'block';
+        badge.classList.remove('show');
+        if (rvhHistory.length === 0) {
+          setTimeout(() => {
+            rvhAddMessage('bot',
+              "Hey there! 👋 I'm Jenny, your RealtyVAHub advisor.\n\nI help real estate investors and operators find the right virtual assistants to scale their business — from cold callers to acquisitions and dispositions VAs.\n\nWhat can I help you with today?",
+              ['What VAs do you offer?', 'How much does it cost?', 'How do I get started?', 'I need a cold caller']
+            );
+          }, 400);
+        }
+      } else {
+        panel.classList.remove('open');
+        bubble.classList.remove('open');
+        iconChat.style.display  = 'block';
+        iconClose.style.display = 'none';
+      }
+    }
+
+    setTimeout(() => {
+      if (!rvhOpen) document.getElementById('rvh-badge').classList.add('show');
+    }, 3000);
+    </script>
   </body>
 </html>
