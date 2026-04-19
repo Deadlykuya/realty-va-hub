@@ -508,7 +508,8 @@ async function rvhAsk(userMessage) {
     rvhHideTyping();
     rvhTyping = false;
     document.getElementById('rvh-send').disabled = false;
-    if (data.content && data.content[0]) {
+    console.log('Anthropic response:', JSON.stringify(data));
+if (data.content && data.content[0]) {
       const reply = data.content[0].text;
       rvhHistory.push({ role: 'assistant', content: reply });
       rvhAddMessage('bot', reply);
