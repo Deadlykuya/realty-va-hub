@@ -586,8 +586,16 @@ Strict Rules:
     }
 
     setTimeout(() => {
-      if (!rvhOpen) document.getElementById('rvh-badge').classList.add('show');
-    }, 3000);
-    </script>
-  </body>
-</html>
+  if (!rvhOpen) {
+    document
+      .getElementById('rvh-badge')
+      .classList.add('show');
+  }
+}, 3000);
+
+/* FIX FOR VITE + REACT */
+
+window.rvhToggle = rvhToggle;
+window.rvhSend = rvhSend;
+window.rvhKeydown = rvhKeydown;
+window.rvhAutoResize = rvhAutoResize;
