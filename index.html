@@ -3,55 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Realty VA Hub</title>
 
+  <link rel="icon" type="image/png" href="/home.png" />
+
+  <meta name="description" content="Realty VA Hub Agency" />
+  <meta name="author" content="REVA Hub" />
+
+  <meta property="og:title" content="Realty VA Hub Agency" />
+  <meta
+    property="og:description"
+    content="Premium Virtual Assistant services for Real Estate professionals"
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:image"
+    content="https://lovable.dev/opengraph-image-p98pqg.png"
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@lovable_dev" />
+  <meta
+    name="twitter:image"
+    content="https://lovable.dev/opengraph-image-p98pqg.png"
+  />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    #root {
-      min-height: 100vh;
-    }
-
     /* CHAT BUBBLE */
+
     #rvh-chat-bubble {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 65px;
-      height: 65px;
+      bottom: 28px;
+      right: 28px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      border: none;
-      background: #1a3c5e;
-      color: white;
-      font-size: 26px;
+      background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
+      box-shadow: 0 6px 28px rgba(26,60,94,0.45);
       cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-      transition: 0.3s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      color: white;
+      font-size: 24px;
     }
 
-    #rvh-chat-bubble:hover {
-      transform: scale(1.08);
-    }
-
-    /* CHAT PANEL */
     #rvh-chat-panel {
       position: fixed;
-      bottom: 100px;
-      right: 25px;
+      bottom: 102px;
+      right: 28px;
       width: 360px;
       height: 520px;
       background: white;
-      border-radius: 18px;
-      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.2);
       display: none;
       flex-direction: column;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      z-index: 9999;
+      overflow: hidden;
+      z-index: 999999;
+      font-family: Arial, sans-serif;
     }
 
     #rvh-chat-panel.open {
@@ -61,25 +74,17 @@
     .rvh-header {
       background: #1a3c5e;
       color: white;
-      padding: 15px;
+      padding: 16px;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .rvh-close-btn {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    #rvh-messages {
+    .rvh-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 15px;
+      padding: 14px;
       background: #f5f7fb;
     }
 
@@ -97,8 +102,8 @@
       max-width: 80%;
       padding: 10px 14px;
       border-radius: 14px;
-      font-size: 14px;
       line-height: 1.5;
+      font-size: 14px;
     }
 
     .rvh-msg.bot .rvh-bubble {
@@ -115,27 +120,32 @@
       display: flex;
       padding: 12px;
       border-top: 1px solid #ddd;
-      background: white;
     }
 
     #rvh-input {
       flex: 1;
-      resize: none;
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 10px;
-      font-size: 14px;
+      resize: none;
       outline: none;
     }
 
     #rvh-send {
       margin-left: 10px;
+      width: 45px;
       border: none;
       background: #1a3c5e;
       color: white;
-      width: 45px;
       border-radius: 10px;
       cursor: pointer;
+    }
+
+    #rvh-close {
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: white;
       font-size: 18px;
     }
 
@@ -151,7 +161,12 @@
 
 <body>
 
+  <!-- YOUR WEBSITE -->
   <div id="root"></div>
+
+  <!-- IMPORTANT -->
+  <!-- KEEP THIS -->
+  <script type="module" src="src/main.tsx"></script>
 
   <!-- CHAT BUBBLE -->
   <button id="rvh-chat-bubble">
@@ -163,76 +178,90 @@
 
     <div class="rvh-header">
       Jenny • RealtyVA Advisor
-      <button class="rvh-close-btn" id="rvh-close-btn">✕</button>
+
+      <button id="rvh-close">
+        ✕
+      </button>
     </div>
 
-    <div id="rvh-messages"></div>
+    <div class="rvh-messages" id="rvh-messages"></div>
 
     <div class="rvh-input-area">
+
       <textarea
         id="rvh-input"
-        placeholder="Type your message..."
         rows="1"
+        placeholder="Ask something..."
       ></textarea>
 
       <button id="rvh-send">
         ➤
       </button>
+
     </div>
 
   </div>
 
   <script>
-    const RVH_PROXY_URL = 'https://realtyvahub-proxy2.ryan0312001.workers.dev';
 
-    const RVH_SYSTEM_PROMPT = `
-You are Jenny, a professional and friendly real estate virtual assistant advisor for RealtyVAHub.
+    const RVH_PROXY_URL =
+      'https://realtyvahub-proxy2.ryan0312001.workers.dev';
 
-You help real estate investors and operators learn about:
-- Cold callers
-- Acquisitions VAs
-- Dispositions VAs
-- Property management VAs
-- Real estate lead generation
-- CRM systems
-- Real estate operations
+    const bubble =
+      document.getElementById('rvh-chat-bubble');
 
-Keep answers concise and professional.
-`;
+    const panel =
+      document.getElementById('rvh-chat-panel');
 
-    let rvhHistory = [];
+    const closeBtn =
+      document.getElementById('rvh-close');
 
-    const bubble = document.getElementById('rvh-chat-bubble');
-    const panel = document.getElementById('rvh-chat-panel');
-    const closeBtn = document.getElementById('rvh-close-btn');
-    const messages = document.getElementById('rvh-messages');
-    const input = document.getElementById('rvh-input');
-    const sendBtn = document.getElementById('rvh-send');
+    const sendBtn =
+      document.getElementById('rvh-send');
 
-    bubble.addEventListener('click', toggleChat);
-    closeBtn.addEventListener('click', toggleChat);
-    sendBtn.addEventListener('click', sendMessage);
+    const input =
+      document.getElementById('rvh-input');
 
-    input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
+    const messages =
+      document.getElementById('rvh-messages');
 
-    function toggleChat() {
+    let history = [];
+
+    bubble.addEventListener('click', () => {
+
       panel.classList.toggle('open');
 
       if (messages.innerHTML.trim() === '') {
+
         addMessage(
           'bot',
           "Hey there 👋 I'm Jenny from RealtyVAHub. How can I help you today?"
         );
       }
-    }
+    });
+
+    closeBtn.addEventListener('click', () => {
+
+      panel.classList.remove('open');
+
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    input.addEventListener('keydown', function(e) {
+
+      if (e.key === 'Enter' && !e.shiftKey) {
+
+        e.preventDefault();
+
+        sendMessage();
+      }
+    });
 
     function addMessage(role, text) {
+
       const div = document.createElement('div');
+
       div.className = 'rvh-msg ' + role;
 
       div.innerHTML = `
@@ -256,60 +285,67 @@ Keep answers concise and professional.
 
       input.value = '';
 
-      rvhHistory.push({
+      history.push({
         role: 'user',
         content: text
       });
 
       try {
 
-        const response = await fetch(RVH_PROXY_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'openrouter/auto',
-            messages: [
-              {
-                role: 'system',
-                content: RVH_SYSTEM_PROMPT
-              },
-              ...rvhHistory
-            ]
-          })
-        });
+        const response = await fetch(
+          RVH_PROXY_URL,
+          {
+            method: 'POST',
+
+            headers: {
+              'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+
+              model: 'openrouter/auto',
+
+              messages: history
+
+            })
+          }
+        );
 
         const data = await response.json();
 
-        let reply = "Sorry, something went wrong.";
+        console.log(data);
+
+        let reply =
+          "Sorry, something went wrong.";
 
         if (
           data &&
           data.choices &&
-          data.choices[0] &&
-          data.choices[0].message
+          data.choices[0]
         ) {
-          reply = data.choices[0].message.content;
+
+          reply =
+            data.choices[0].message.content;
         }
 
         addMessage('bot', reply);
 
-        rvhHistory.push({
+        history.push({
           role: 'assistant',
           content: reply
         });
 
-      } catch (error) {
+      } catch (err) {
 
-        console.error(error);
+        console.error(err);
 
         addMessage(
           'bot',
-          'Connection error. Please check your Cloudflare Worker or API.'
+          'Connection error. Check Cloudflare Worker or OpenRouter API.'
         );
       }
     }
+
   </script>
 
 </body>
