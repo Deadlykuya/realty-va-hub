@@ -7,7 +7,7 @@ const crmPackages = [
     subtitle:
       "Best for wholesalers just getting started with CRM and outreach. Includes 1 dedicated cold caller to begin building your pipeline.",
     price: "$1,199",
-    label: "One-Time Setup Fee",
+    label: "One-Time Setup Fee + Weekly VA service rate",
     features: [
       "Lead tracking workflow to organize prospects",
       "Immediate outreach workflow for fast follow-up",
@@ -27,7 +27,7 @@ const crmPackages = [
     subtitle:
       "Best for active wholesalers ready to scale their pipeline. Includes 1 cold caller + 1 acquisitions manager to generate leads and convert them into signed contracts.",
     price: "$1,699",
-    label: "One-Time Setup Fee",
+    label: "One-Time Setup Fee + Weekly VA service rate",
     features: [
       "All workflows included in Starter",
       "Appointment reminder sequences to reduce no-shows",
@@ -47,7 +47,7 @@ const crmPackages = [
     subtitle:
       "The ultimate system with multi-channel outreach and full team support. Includes 1 cold caller + 1 acquisitions manager + 1 dispositions manager for complete pipeline coverage.",
     price: "$2,299",
-    label: "One-Time Setup Fee",
+    label: "One-Time Setup Fee + Weekly VA service rate",
     features: [
       "All features included in Boost",
       "Advanced dashboards and analytics for deeper insights",
