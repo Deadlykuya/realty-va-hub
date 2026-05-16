@@ -74,18 +74,18 @@ export const Pricing = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-6xl font-black mb-6">
-            <span className="text-white">Simple</span>{" "}
-            <span className="text-yellow-400">Pricing</span>
+            <span className="text-white">Built to</span>{" "}
+            <span className="text-yellow-400">Close</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Transparent, competitive rates with no hidden fees. Choose the plan that fits your needs.
+            Transparent, competitive rates with no hidden fees. Each package includes a one-time setup fee to build and configure your complete VA infrastructure, plus a simple weekly management rate billed per VA thereafter.
           </p>
         </div>
 
         <div className="w-full max-w-5xl mx-auto space-y-20">
           <div>
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">CRM Packages</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Done-For-You Operations Packages</h3>
               <p className="text-gray-300 text-lg max-w-3xl mx-auto">
                 Every RealtyVAHub CRM package comes with a fully customized infrastructure, built and
                 configured by our Philippines-based Real Estate VA team. We don't just hand you software.
