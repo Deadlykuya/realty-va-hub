@@ -2,43 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 
 const RVH_PROXY_URL = 'https://realtyvahub-proxy2.ryan0312001.workers.dev';
 
-const RVH_SYSTEM_PROMPT = `You are Jenny, a friendly and knowledgeable real estate virtual assistant advisor for RealtyVAHub — a company that places trained virtual assistants for real estate investors, agents, and operators across the U.S.
-
-Your Personality:
-- Warm, confident, and professional — like a trusted real estate colleague
-- Use short paragraphs and clear language
-- Occasionally use relevant real estate emojis (🏡🏢📋💼) but don't overdo it
-- Show genuine enthusiasm for helping clients scale their real estate businesses
-
-Your Purpose:
-- Answer questions about RealtyVAHub's VA services, pricing, and how VAs work
-- Explain the different VA roles: Cold Callers/ISAs, Acquisitions VAs, Dispositions VAs, Client Relations VAs
-- Help clients figure out which VA type is right for their business
-- Guide leads toward booking a discovery call or getting a quote
-- Educate on real estate operations, lead generation, and scaling strategies
-
-Your Knowledge Base (answer ONLY from these topics):
-1. VA Roles at RealtyVAHub:
-   - Cold Callers/ISAs: outbound prospecting, motivated seller lists, multifamily owner outreach, appointment setting
-   - Acquisitions VAs: lead follow-up, deal qualification, CRM management, offer support
-   - Dispositions VAs: buyer list building, deal marketing, contract coordination, closing support
-   - Property Management VAs: tenant communication, landlord updates, inbox and calendar management
-
-2. Clients We Serve: multifamily investors, single-family wholesalers, fix-and-flip operators, property managers, real estate agents and brokers
-
-3. Common real estate VA questions: onboarding timelines, training process, KPIs, what to expect, ROI
-
-4. General real estate business topics: lead generation, cold calling, CRM systems (Podio, HubSpot, REsimpli, Salesforce), wholesaling, property management
-
-Strict Rules:
-- ONLY discuss real estate and RealtyVAHub topics. If asked about anything unrelated, politely redirect: "I'm specialized in real estate VA services — I'd love to help with anything in that space! 🏡"
-- Never make up specific pricing — say pricing depends on role and hours, and invite them to get a custom quote
-- Always end responses with a helpful next step or question to keep the conversation going
-- Keep responses concise (under 120 words unless a detailed breakdown is truly needed)
-- If someone seems ready to hire, guide them to: "You can book a free discovery call at RealtyVAHub.com 📋"`;
+const RVH_SYSTEM_PROMPT = `You are Jenny, a friendly and knowledgeable real estate virtual assistant advisor for RealtyVAHub. Answer questions about VA services, pricing, and real estate operations. Keep responses concise and helpful.`;
 
 interface Message {
-  role: 'user' | 'assistant';
+  role: string;
   content: string;
   time: string;
 }
@@ -49,7 +16,7 @@ export default function ChatWidget() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showBadge, setShowBadge] = useState(false);
-  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState<any[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -98,7 +65,7 @@ export default function ChatWidget() {
         setMessages(prev => [...prev, botMsg]);
         setChatHistory(prev => [...prev, { role: 'assistant', content: reply }]);
       } else {
-        const errorMsg: Message = { role: 'assistant', content: "I'm having a moment — please try again in a second! 🏡", time: getTime() };
+        const errorMsg: Message = { role: 'assistant', content: "I'm having a moment — please try again! 🏡", time: getTime() };
         setMessages(prev => [...prev, errorMsg]);
       }
     } catch (err) {
@@ -108,7 +75,7 @@ export default function ChatWidget() {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: any) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage(input);
@@ -122,7 +89,7 @@ export default function ChatWidget() {
       setTimeout(() => {
         const welcomeMsg: Message = {
           role: 'assistant',
-          content: "Hey there! 👋 I'm Jenny, your RealtyVAHub advisor.\n\nI help real estate investors and operators find the right virtual assistants to scale their business — from cold callers to acquisitions and dispositions VAs.\n\nWhat can I help you with today?",
+          content: "Hey there! 👋 I'm Jenny, your RealtyVAHub advisor.\n\nI help real estate investors and operators find the right virtual assistants to scale their business.\n\nWhat can I help you with today?",
           time: getTime()
         };
         setMessages([welcomeMsg]);
@@ -133,7 +100,6 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Chat Bubble */}
       <button
         onClick={handleOpen}
         style={{
@@ -144,15 +110,13 @@ export default function ChatWidget() {
           height: '62px',
           borderRadius: '50%',
           background: 'linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%)',
-          boxShadow: '0 6px 28px rgba(26,60,94,0.45), 0 2px 8px rgba(0,0,0,0.18)',
+          boxShadow: '0 6px 28px rgba(26,60,94,0.45)',
           cursor: 'pointer',
           border: 'none',
           display: isOpen ? 'none' : 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: 99999,
-          transition: 'transform 0.25s cubic-bezier(.34,1.56,.64,1)',
-          animation: 'rvh-pulse 3s ease-in-out infinite'
+          zIndex: 99999
         }}
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -173,13 +137,11 @@ export default function ChatWidget() {
             alignItems: 'center',
             justifyContent: 'center',
             border: '2px solid #fff',
-            fontWeight: 700,
-            fontFamily: "'Plus Jakarta Sans', sans-serif"
+            fontWeight: 700
           }}>1</span>
         )}
       </button>
 
-      {/* Chat Panel */}
       {isOpen && (
         <div style={{
           position: 'fixed',
@@ -189,18 +151,16 @@ export default function ChatWidget() {
           height: '540px',
           background: '#ffffff',
           borderRadius: '20px',
-          boxShadow: '0 20px 70px rgba(0,0,0,0.18), 0 4px 20px rgba(26,60,94,0.1)',
+          boxShadow: '0 20px 70px rgba(0,0,0,0.18)',
           display: 'flex',
           flexDirection: 'column',
           zIndex: 99999,
           overflow: 'hidden',
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          animation: 'rvh-slideUp 0.35s cubic-bezier(.34,1.56,.64,1)'
+          fontFamily: 'system-ui, sans-serif'
         }}>
-          {/* Header */}
           <div style={{
             background: 'linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%)',
-            padding: '18px 20px 16px',
+            padding: '18px 20px',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
@@ -215,27 +175,11 @@ export default function ChatWidget() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '20px',
-              position: 'relative'
-            }}>
-              🏠
-              <div style={{
-                position: 'absolute',
-                bottom: '1px',
-                right: '1px',
-                width: '10px',
-                height: '10px',
-                background: '#4ade80',
-                borderRadius: '50%',
-                border: '2px solid #2d6a9f'
-              }}></div>
-            </div>
+              fontSize: '20px'
+            }}>🏠</div>
             <div style={{ flex: 1 }}>
               <div style={{ color: '#fff', fontWeight: 700, fontSize: '14.5px' }}>Jenny — RealtyVA Advisor</div>
-              <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11.5px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <span style={{ width: '7px', height: '7px', background: '#4ade80', borderRadius: '50%', display: 'inline-block' }}></span>
-                Online now
-              </div>
+              <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11.5px' }}>🟢 Online now</div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -247,28 +191,11 @@ export default function ChatWidget() {
                 width: '30px',
                 height: '30px',
                 borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '16px',
-                flexShrink: 0
+                fontSize: '16px'
               }}
             >✕</button>
           </div>
 
-          <div style={{
-            background: 'rgba(26,60,94,0.06)',
-            color: '#1a3c5e',
-            fontSize: '11px',
-            padding: '6px 20px 8px',
-            textAlign: 'center',
-            borderBottom: '1px solid #edf2f8',
-            flexShrink: 0
-          }}>
-            Real Estate Virtual Assistant Experts 🏡
-          </div>
-
-          {/* Messages */}
           <div style={{
             flex: 1,
             overflowY: 'auto',
@@ -292,8 +219,7 @@ export default function ChatWidget() {
                       background: 'linear-gradient(135deg,#1a3c5e,#2d6a9f)',
                       borderRadius: '50%',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '11px', color: '#fff',
-                      flexShrink: 0
+                      fontSize: '11px', color: '#fff'
                     }}>J</div>
                     <span style={{ fontSize: '11px', color: '#6b8299', fontWeight: 600 }}>Jenny</span>
                   </div>
@@ -308,8 +234,7 @@ export default function ChatWidget() {
                     : '#fff',
                   color: msg.role === 'user' ? '#fff' : '#1a2a3a',
                   borderBottomLeftRadius: msg.role === 'assistant' ? '5px' : '16px',
-                  borderBottomRightRadius: msg.role === 'user' ? '5px' : '16px',
-                  boxShadow: msg.role === 'assistant' ? '0 2px 8px rgba(0,0,0,0.07)' : 'none'
+                  borderBottomRightRadius: msg.role === 'user' ? '5px' : '16px'
                 }}>
                   {msg.content}
                 </div>
@@ -317,51 +242,26 @@ export default function ChatWidget() {
                   fontSize: '10.5px',
                   color: '#99aabb',
                   marginTop: '3px',
-                  padding: '0 4px',
                   textAlign: msg.role === 'user' ? 'right' : 'left'
                 }}>{msg.time}</div>
               </div>
             ))}
             {isTyping && (
-              <div style={{ alignSelf: 'flex-start' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '4px' }}>
-                  <div style={{
-                    width: '22px', height: '22px',
-                    background: 'linear-gradient(135deg,#1a3c5e,#2d6a9f)',
-                    borderRadius: '50%',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '11px', color: '#fff'
-                  }}>J</div>
-                  <span style={{ fontSize: '11px', color: '#6b8299', fontWeight: 600 }}>Jenny</span>
-                </div>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  padding: '10px 14px',
-                  background: '#fff',
-                  borderRadius: '16px',
-                  borderBottomLeftRadius: '5px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-                  width: 'fit-content'
-                }}>
-                  <div className="typing-dot" style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%' }}></div>
-                  <div className="typing-dot" style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%', animationDelay: '0.2s' }}></div>
-                  <div className="typing-dot" style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%', animationDelay: '0.4s' }}></div>
-                </div>
+              <div style={{ display: 'flex', gap: '5px', padding: '10px 14px', background: '#fff', borderRadius: '16px', width: 'fit-content' }}>
+                <div style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%' }}></div>
+                <div style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%' }}></div>
+                <div style={{ width: '7px', height: '7px', background: '#2d6a9f', borderRadius: '50%' }}></div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
           <div style={{
             padding: '12px 14px',
             background: '#fff',
             borderTop: '1px solid #edf2f8',
             display: 'flex',
             gap: '9px',
-            alignItems: 'flex-end',
             flexShrink: 0
           }}>
             <textarea
@@ -375,14 +275,11 @@ export default function ChatWidget() {
                 border: '1.5px solid #dde7f2',
                 borderRadius: '12px',
                 padding: '10px 14px',
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontSize: '13.5px',
-                color: '#1a2a3a',
                 outline: 'none',
                 resize: 'none',
                 maxHeight: '80px',
                 minHeight: '40px',
-                lineHeight: 1.5,
                 background: '#f8fafd'
               }}
             />
@@ -396,12 +293,7 @@ export default function ChatWidget() {
                 border: 'none',
                 borderRadius: '11px',
                 cursor: isTyping ? 'not-allowed' : 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                opacity: isTyping ? 0.5 : 1,
-                boxShadow: '0 3px 12px rgba(45,106,159,0.4)'
+                opacity: isTyping ? 0.5 : 1
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -418,32 +310,10 @@ export default function ChatWidget() {
             background: '#fff',
             flexShrink: 0
           }}>
-            Powered by RealtyVAHub · AI may make mistakes
+            Powered by RealtyVAHub
           </div>
         </div>
       )}
-
-      <style>{`
-        @keyframes rvh-pulse {
-          0%, 100% { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 0 rgba(45,106,159,0.4); }
-          50% { box-shadow: 0 6px 28px rgba(26,60,94,0.45), 0 0 0 12px rgba(45,106,159,0); }
-        }
-        @keyframes rvh-slideUp {
-          from { opacity: 0; transform: scale(0.85) translateY(20px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .typing-dot {
-          animation: rvh-bounce 1.2s ease-in-out infinite;
-          opacity: 0.6;
-        }
-        @keyframes rvh-bounce {
-          0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
-          30% { transform: translateY(-5px); opacity: 1; }
-        }
-        @media (max-width: 480px) {
-          #rvh-chat-panel { width: calc(100vw - 24px) !important; right: 12px !important; bottom: 90px !important; height: 72vh !important; max-height: 560px !important; }
-        }
-      `}</style>
     </>
   );
 }
